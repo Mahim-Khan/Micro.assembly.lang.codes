@@ -1,0 +1,26 @@
+INCLUDE "EMU8086.INC"
+.MODEL SMALL
+.STACK 100H 
+.CODE
+MAIN PROC 
+    MOV CL,0
+    PRINT "ENTER YOUR MESSAGE :"
+     
+    UP:
+    MOV AH,1
+    INT 21H
+    MOV BL,AL
+    
+    CMP BL,0DH
+    JE PNT
+    INC CL
+    JMP UP
+    
+    PNT:
+    PRINTN
+    ADD CL,30H
+    MOV AH,2
+    MOV DL,CL
+    INT 21H
+ 
+     EXIT:

@@ -1,0 +1,18 @@
+INCLUDE "EMU8086.INC"
+.MODEL SMALL
+.STACK 100H 
+.CODE
+MAIN PROC
+    PRINT "INPUT A CHARACTER:"
+    
+    MOV CX,10
+    MOV AH,2
+    MOV DL,"*"  
+    UP:
+    INT 21H
+    DEC CX
+    CMP CX,0
+    JG UP
+ 
+     EXIT:
+    

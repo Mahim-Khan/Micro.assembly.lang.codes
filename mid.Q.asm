@@ -1,0 +1,32 @@
+INCLUDE "EMU8086.INC" 
+.MODEL SMALL
+.STACK 100H
+.CODE  
+MAIN PROC
+    PRINT "ENTER FRIST NUMBER: "
+    MOV AH,1
+    INT 21H
+    MOV BH,AL  
+     
+    PRINTN      
+    PRINT "ENTER 2ND NUMBER: "
+    INT 21H
+    MOV BL,AL 
+     
+    PRINTN
+    PRINT "ENTER 3RD NUMBER: "
+    INT 21H
+    MOV CH,AL
+    
+    ADD BH,CH
+    SUB BH,30H
+    
+    SUB BH,BL
+    ADD BH,30H
+    
+    PRINTN
+    MOV AH,2
+    MOV DL,BH
+    INT 21H
+    
+    EXIT:

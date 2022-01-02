@@ -1,0 +1,33 @@
+INCLUDE "EMU8086.INC"
+.MODEL SMALL
+.STACK 100H
+.CODE
+MAIN PROC
+    PRINT "ENTER A CHRACTER: "
+    MOV AH,1
+    INT 21H
+    MOV BL,AL
+    
+    CMP BL,"A"
+    JNGE NONE 
+    CMP BL,"Z"
+    JNLE LOW
+    
+    PRINTN
+    PRINT "UPPER CASE ! "
+    JMP EXIT   
+    
+    LOW:
+    CMP BL,"a"
+    JNGE NONE 
+    CMP BL,"z"
+    JNLE NONE
+    
+    PRINTN
+    PRINT "LOWER CASE ! "
+    JMP EXIT
+     
+     NONE:
+     PRINTN
+     PRINT "NOT A LETTER"
+     EXIT:

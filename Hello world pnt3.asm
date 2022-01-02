@@ -1,0 +1,23 @@
+;WRITE AN CODE THAT DISPLAY "HELLO WORLD" IF USER PRESS 1
+INCLUDE "EMU8086.INC"
+.MODEL SMALL
+.STACK 100H
+.CODE
+MAIN PROC
+     PRINT "INPUT A CHARACTER: "
+     MOV AH,1
+     INT 21H  
+     MOV BL,AL
+               
+     CMP AL,"Y"
+     JE PNT
+     CMP BL,"y"
+     JNE EXIT 
+     
+     
+     PNT:
+     PRINTN
+     PRINT "HELLO WORLD ! "
+     
+     EXIT:
+     
